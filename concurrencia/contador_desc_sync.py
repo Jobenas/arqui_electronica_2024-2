@@ -1,6 +1,6 @@
 import time
 
-N = 70_000_000
+N = 200_000_000
 
 
 def cuenta(n: int):

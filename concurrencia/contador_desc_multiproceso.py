@@ -1,22 +1,22 @@
+from multiprocessing import Process
 import time
-from threading import Thread
 
 N = 200_000_000
 
 
-def cuenta(n: int):
+def cuenta(n: int) -> None:
     while n > 0:
         n -= 1
 
 
 if __name__ == '__main__':
     inicio = time.perf_counter()
-    t1 = Thread(target=cuenta, args=(N // 2,))
-    t2 = Thread(target=cuenta, args=(N // 2,))
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
+    p1 = Process(target=cuenta, args=(N // 2, ))
+    p2 = Process(target=cuenta, args=(N // 2, ))
+    p1.start()
+    p2.start()
+    p1.join()
+    p2.join()
     fin = time.perf_counter()
 
     t_ejecucion = fin - inicio
